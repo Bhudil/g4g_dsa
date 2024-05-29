@@ -1,0 +1,24 @@
+#include <iostream>
+vector<vector<int> > stockBuySell(vector<int> A, int n){
+        // code here
+        vector<vector<int>> result;
+    int i = 0;
+    while (i < n - 1) {
+        // Find local minima
+        while (i < n - 1 && A[i] >= A[i + 1]) {
+            i++;
+        }
+        if (i == n - 1) {
+            break;
+        }
+        int buy = i++;
+
+        // Find local maxima
+        while (i < n && A[i] >= A[i - 1]) {
+            i++;
+        }
+        int sell = i - 1;
+        result.push_back({buy, sell});
+    }
+    return result;
+    }
